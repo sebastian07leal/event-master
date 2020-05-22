@@ -159,6 +159,5 @@ $ RECYCLE.BIN /
 * .lnk
 
 # Configuration to services
-config.js
 node_modules
 .env
