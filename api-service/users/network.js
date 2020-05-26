@@ -17,6 +17,12 @@ async function newUser(req, res) {
   }
 }
 
+async function login(req, res) {
+  const { body } = req;
+  responces.succes(req, res, body, 200);
+}
+
 router.post('/saveUser/', newUser);
+router.post('/login-pass', login);
 
 module.exports = router;

@@ -15,6 +15,7 @@ async function validateEmail(email) {
 /** Esta función se conecta con el storage yenvia la data para guardar */
 async function saveUser(dataUser) {
   try {
+    console.log(dataUser);
     return dataUser;
   } catch (err) {
     console.error(err.message);
