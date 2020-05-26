@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const axios = require('axios');
+const jwt = require('../jwt/index');
 
 async function checkParameters(body) {
   const data = {
@@ -48,7 +49,9 @@ async function encryptPassword(object) {
 async function sendDataUser(data) {
   try {
     const res = await axios.post('http://localhost:3000/saveUser/', data);
-    return res.data;
+    const dataTokeniced = await jwt.generateToken(res.data);
+
+    return dataTokeniced;
   } catch (err) {
     console.log(err.message);
     return '!Implemented Error';

@@ -9,7 +9,7 @@ async function createUser(req, res) {
   try {
     const { body } = req;
     const responceUser = await controllers.checkParameters(body);
-    responces.succes(req, res, responceUser.message, responceUser.status);
+    responces.succes(req, res, responceUser, 201);
   } catch (err) {
     console.error(err);
   }

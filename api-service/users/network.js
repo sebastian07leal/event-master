@@ -10,7 +10,6 @@ async function newUser(req, res) {
     const { body } = req;
     await controller.validateEmail(body.email);
     const responceSave = await controller.saveUser(body);
-
     responces.succes(req, res, responceSave, 201);
   } catch (err) {
     console.error(err.message);
