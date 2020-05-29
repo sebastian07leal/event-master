@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 /** Esta función debe conectarse a la base de datos y validar si existe el correo,
  * en caso de existir debe devolver error al crear el usuario
  */
@@ -15,9 +17,14 @@ async function validateEmail(email) {
 /** Esta función se conecta con el storage yenvia la data para guardar */
 async function saveUser(dataUser) {
   try {
-    console.log(dataUser);
-    return dataUser;
+    const res = await axios.post(
+      'http://localhost:8080/api/v1/users/',
+      dataUser
+    );
+
+    return res.data;
   } catch (err) {
+    console.log('error desde api');
     console.error(err.message);
     return err;
   }

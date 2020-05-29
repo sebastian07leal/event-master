@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("user", {
+  const User = sequelize.define('user', {
     name: {
       type: Sequelize.STRING,
     },
@@ -18,13 +18,13 @@ module.exports = (sequelize, Sequelize) => {
     },
     type: {
       type: Sequelize.ENUM({
-        values: ["organizer", "sponsor", "administrator"],
+        values: ['organizer', 'sponsor', 'administrator'],
       }),
-      comment: "organizer,sponsor,administrator",
+      comment: 'organizer,sponsor,administrator',
     },
     status: {
       type: Sequelize.INTEGER,
-      comment: "active, inactive",
+      comment: 'active, inactive',
     },
     password: {
       type: Sequelize.STRING,

@@ -15,21 +15,30 @@ exports.create = (req, res) => {
     });
     return;
   }
-  if (types.includes(req.body.type) == false || !req.body.type) {
+
+  if (types.includes(req.body.typeUser) == false || !req.body.typeUser) {
+    console.log('Error');
+    console.log(req.body.type);
     res.status(400).send({
       message: 'Type User can not be empty!',
     });
     return;
   }
+
   // Create a User
   const user = {
     name: req.body.name,
     email: req.body.email,
+    password: req.body.password,
     biography: req.body.biography,
     avatar: req.body.avatar ? req.body.avatar : null,
-    type: req.body.type,
+    type: req.body.typeUser,
     status: req.body.status ? req.body.status : 1,
   };
+
+  console.log('CONECTADO EN BD');
+  console.log(req.body);
+  console.log(user);
 
   // Save User in the database
   User.create(user)
@@ -37,10 +46,9 @@ exports.create = (req, res) => {
       res.send(data);
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).send({
-        message:
-          err.errors[0].message ||
-          'Some error occurred while creating the user.',
+        message: 'Some error occurred while creating the user.',
       });
     });
 };
